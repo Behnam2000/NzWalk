@@ -1,0 +1,6 @@
+// Run migration which make the C# classes (Domain Models) act like SQL to create tables and relationships between them.
+Add-Migration
+
+
+// It will execute the migration file and will create the new database along with all the tables, columns and relationship that are required
+Update-Database

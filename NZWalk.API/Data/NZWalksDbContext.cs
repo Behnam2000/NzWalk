@@ -11,6 +11,7 @@ namespace NZWalk.API.Data
 
         }
 
+        // These DbSet properties will represent the tables in the database
         public DbSet<Difficulty> Difficulties { get; set; }
         public DbSet<Region> Regions { get; set; }
         public DbSet<Walk> Walks { get; set; }
