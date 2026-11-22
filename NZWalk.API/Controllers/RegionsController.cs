@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using NZWalk.API.Data;
 using NZWalk.API.Models.Domain;
@@ -139,5 +140,38 @@ namespace NZWalk.API.Controllers
             return Ok(regionDto);
 
         }
+
+        // Delete Region
+        // DELETE: https://localhost:portnumber/api/regions/{id}
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+            var regionDomainModel = dbContext.Regions.FirstOrDefault(r => r.Id == id);
+
+            // Check if the region is existed or not
+            if (regionDomainModel == null)
+            {
+                return NotFound();
+            }
+
+            // Delete region
+            dbContext.Regions.Remove(regionDomainModel);
+            dbContext.SaveChanges();
+
+            // return deleted region back
+            // map Domain Model to DTO
+            var regionDto = new RegionDto
+            {
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegionImageUrl = regionDomainModel.RegionImageUrl
+            };
+
+            return Ok(regionDto);
+
+        }
+
     }
 }
