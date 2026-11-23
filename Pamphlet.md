@@ -51,3 +51,47 @@ style S fill:none,stroke:none
 3. **Performance**: We can always improve the performance of the code by using caching, batching or ...
 4. **Multiple data sources (switching)**: which allows the application to switch between different data sources without affecting the application logic.
 
+---
+
+## AutoMapper
+
+**AutoMapper** is a .NET library that maps data between objects, such as database entities (or Domain Models and View Models) and DTOs, using matching property names and configurable rules.
+With help of **AutoMapper** you can create mappings between the source and destination objects in a centralized location which can be used throughout your application.
+This reduces the need for manually copying values between objects, and you can help to make your code more maintainable and error prone.
+It can be intergrated into you app using NuGet packages and configuared using its fluent Api.
+
+Define mapping with ```CreateMap<Source, Destination>()```, then use ```IMapper``` to perform them.
+
+- Object-to-object mapping
+- Simplification
+- Map between DTOs and Domain Models and Vice-versa
+- Quite powerful apart from just simple object-to-object mapping
+
+### Basic Usage
+
+To use AutoMapper, follow these steps:
+
+1. Install AutoMapper: Use NuGet to add AutoMapper to your project.
+```
+bash
+
+dotnet add package AutoMapper
+```
+
+2. Define Mappings: Create a mapping configuration using ```CreateMap<Source, Destination>()```.
+```
+csharp
+
+var config = new MapperConfiguration(cfg => 
+{
+    cfg.CreateMap<SourceClass, DestinationClass>();
+});
+```
+3. Perform Mapping: Use the ```IMapper``` interface to execute the mapping.
+
+```
+csharp
+
+var mapper = config.CreateMapper();
+var destinationObject = mapper.Map<DestinationClass>(sourceObject);
+```
