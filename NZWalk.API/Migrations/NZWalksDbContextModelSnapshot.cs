@@ -35,6 +35,23 @@ namespace NZWalk.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Difficulties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("34b56837-4104-43e4-bcb5-ab2ab5e6b424"),
+                            Name = "Easy"
+                        },
+                        new
+                        {
+                            Id = new Guid("d155aa16-86c0-4e19-b81d-c6ca6efdde5c"),
+                            Name = "Medium"
+                        },
+                        new
+                        {
+                            Id = new Guid("6eba8810-fad6-48cb-831f-4b15eb8cdb01"),
+                            Name = "Hard"
+                        });
                 });
 
             modelBuilder.Entity("NZWalk.API.Models.Domain.Region", b =>
@@ -57,6 +74,48 @@ namespace NZWalk.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Regions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("dd669a58-5c7e-4a1a-8f98-6daa9ba31eea"),
+                            Code = "NL",
+                            Name = "Northland",
+                            RegionImageUrl = "https://images.pexels.com/photos/32947398/pexels-photo-32947398.jpeg"
+                        },
+                        new
+                        {
+                            Id = new Guid("b6103648-e840-4c25-8726-03b3e1067eea"),
+                            Code = "AKL",
+                            Name = "Auckland",
+                            RegionImageUrl = "https://images.pexels.com/photos/16575451/pexels-photo-16575451.jpeg"
+                        },
+                        new
+                        {
+                            Id = new Guid("c1fc4257-1a53-4bc6-aa2b-3d3d3a7d463b"),
+                            Code = "WKO",
+                            Name = "Waikato",
+                            RegionImageUrl = "https://images.pexels.com/photos/27105121/pexels-photo-27105121.jpeg"
+                        },
+                        new
+                        {
+                            Id = new Guid("84a16444-bbf4-4c22-a52f-5c64db3e6281"),
+                            Code = "BOP",
+                            Name = "Bay of Plenty"
+                        },
+                        new
+                        {
+                            Id = new Guid("3965a7a3-1cba-4458-b987-87ce6d751394"),
+                            Code = "GIS",
+                            Name = "Gisborne",
+                            RegionImageUrl = "https://images.pexels.com/photos/21047861/pexels-photo-21047861.jpeg"
+                        },
+                        new
+                        {
+                            Id = new Guid("5f2deb33-3e15-4e1c-9056-d11323c706bc"),
+                            Code = "HB",
+                            Name = "Hawke's Bay"
+                        });
                 });
 
             modelBuilder.Entity("NZWalk.API.Models.Domain.Walk", b =>
