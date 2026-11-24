@@ -95,3 +95,35 @@ csharp
 var mapper = config.CreateMapper();
 var destinationObject = mapper.Map<DestinationClass>(sourceObject);
 ```
+
+---
+
+## Navigation Properties
+In Entity Framework, navigation properties are properties that allow us to navigate from one domain model to another.
+or also from one entity to another entity in a relational database.
+1. Navigation properties are used to define relationships between entities, such as one-to-many, many-to-many, and one-to-one relationships.
+2. Navigation properties are defined as properties in a C# class that represent the related entity or collection of entities.
+3. Navigation properties are typically defined using the ```virtual``` keyword, which allows Entity Framework to create a proxy class that can be used to lazy load related entities.
+4. They are typically defined in a form of an object or a collection of objects that reference another entity or collection of entities.
+
+### Example
+If you have a ```Walk``` entity that has a relationship with a ```Difficulty``` entity and a ```Region``` entity, you can define navigation properties in the ```Walk``` class to allow you to navigate to the related entities:
+
+```
+csharp
+public class Walk
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double LengthInKm { get; set; }
+        public string? WalkImageUrl { get; set; }
+
+        public Guid DifficultyId { get; set; }
+        public Guid RegionId { get; set; }
+
+        // Navigation Properties
+        public Difficulty Difficulty { get; set; }
+        public Region Region { get; set; }
+    }
+```

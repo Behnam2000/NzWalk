@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using NZWalk.API.Data;
 using NZWalk.API.Models.Domain;
 
@@ -23,7 +24,11 @@ namespace NZWalk.API.Repositories
 
         public async Task<List<Walk>> GetAllAsync()
         {
-            return await dbContext.Walks.ToListAsync();
+            return await dbContext.Walks.Include("Difficulty").Include("Region").ToListAsync();
+
+            // Alternative (Strongly-typed / Recommended in EF Core):
+            // Instead of using strings (which won't catch typos at compile time), you can use lambda expressions:
+            // |  return await dbContext.Walks.Include(x => x.Difficulty).Include(x => x.Region).ToListAsync();  | 
         }
     }
 }
